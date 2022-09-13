@@ -1,10 +1,10 @@
 name: device_background_location
 description: A new Flutter project.
 version: 1.0.1
-homepage:
+homepage: https://github.com/shekharkhandeparkar/device_background_location.git
 
 environment:
-  sdk: '>=2.18.0-271.7.beta <3.0.0'
+  sdk: ">=2.16.0 <3.0.0"
   flutter: ">=2.5.0"
 
 dependencies:
