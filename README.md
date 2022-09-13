@@ -1,6 +1,6 @@
 # device_background_location
 
-A new Flutter project.
+A Flutter plugin for getting location updates even when the app is killed.
 
 ## Getting Started
 
