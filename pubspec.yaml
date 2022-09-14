@@ -1,6 +1,6 @@
 name: device_background_location
 description: A Flutter plugin for getting location updates even when the app is killed.
-version: 1.0.2
+version: 1.0.10
 homepage: https://github.com/shekharkhandeparkar/device_background_location.git
 
 environment:
@@ -35,7 +35,7 @@ flutter:
   plugin:
     platforms:
       android:
-        package: com.passioncoder.device_background_location.device_background_location
+        package: com.passioncoder.device_background_location
         pluginClass: DeviceBackgroundLocationPlugin
       ios:
         pluginClass: DeviceBackgroundLocationPlugin

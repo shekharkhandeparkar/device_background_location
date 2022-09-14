@@ -1,4 +1,4 @@
-package com.passioncoder.device_background_location.device_background_location
+package com.passioncoder.device_background_location
 
 import android.content.Context
 import android.content.Intent
@@ -8,9 +8,7 @@ import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.embedding.engine.dart.DartExecutor
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.view.FlutterCallbackInformation
-import com.passioncoder.device_background_location.device_background_location.provider.LocationRequestOptions
-import com.passioncoder.device_background_location.device_background_location.IsolateHolderService
-import com.passioncoder.device_background_location.device_background_location.Keys
+import com.passioncoder.device_background_location.provider.LocationRequestOptions
 import java.util.concurrent.atomic.AtomicBoolean
 
 internal fun IsolateHolderService.startLocatorService(context: Context) {

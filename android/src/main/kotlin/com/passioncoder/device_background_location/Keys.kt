@@ -1,4 +1,4 @@
-package com.passioncoder.device_background_location.device_background_location
+package com.passioncoder.device_background_location
 
 class Keys {
     companion object {
@@ -24,10 +24,10 @@ class Keys {
         val DISPOSE_CALLBACK_HANDLE_KEY = "DISPOSE_CALLBACK_HANDLE_KEY"
 
         @JvmStatic
-        val CHANNEL_ID = "app.com.passioncoder.device_background_location/locator_plugin"
+        val CHANNEL_ID = "app.passioncoder/locator_plugin"
 
         @JvmStatic
-        val BACKGROUND_CHANNEL_ID = "app.com.passioncoder.device_background_location/locator_plugin_background"
+        val BACKGROUND_CHANNEL_ID = "app.passioncoder/locator_plugin_background"
 
         @JvmStatic
         val METHOD_SERVICE_INITIALIZED = "LocatorService.initialized"
@@ -157,6 +157,6 @@ class Keys {
         val BCM_DISPOSE = "BCM_DISPOSE"
 
         @JvmStatic
-        val NOTIFICATION_ACTION = "com.passioncoder.device_background_location.device_background_location.notification"
+        val NOTIFICATION_ACTION = "com.passioncoder.device_background_location.notification"
     }
 }

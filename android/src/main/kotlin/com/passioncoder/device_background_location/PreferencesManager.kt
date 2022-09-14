@@ -1,16 +1,16 @@
-package com.passioncoder.device_background_location.device_background_location
+package com.passioncoder.device_background_location
 
 import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.passioncoder.device_background_location.device_background_location.provider.LocationClient
+import com.passioncoder.device_background_location.provider.LocationClient
 
 class PreferencesManager {
     companion object {
         private const val PREF_NAME = "background_locator"
 
         @JvmStatic
-        fun saveCallbackDispatcher(context: Context, map: Map<Any, Any>) {
+        fun saveCallbackDispatcher(context: Context, map: Map<String, Any>) {
             val sharedPreferences =
                     context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
 
@@ -22,7 +22,7 @@ class PreferencesManager {
         }
 
         @JvmStatic
-        fun saveSettings(context: Context, map: Map<Any, Any>) {
+        fun saveSettings(context: Context, map: Map<String, Any>) {
             val sharedPreferences =
                     context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
 
@@ -112,11 +112,11 @@ class PreferencesManager {
         }
 
         @JvmStatic
-        fun getSettings(context: Context): Map<Any, Any> {
+        fun getSettings(context: Context): Map<String, Any> {
             val sharedPreferences =
                     context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
 
-            val result = HashMap<Any, Any>()
+            val result = HashMap<String, Any>()
 
             result[Keys.ARG_CALLBACK_DISPATCHER] = sharedPreferences.getLong(Keys.ARG_CALLBACK_DISPATCHER, 0)
             result[Keys.ARG_CALLBACK] = sharedPreferences.getLong(Keys.ARG_CALLBACK, 0)

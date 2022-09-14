@@ -1,4 +1,4 @@
-package com.passioncoder.device_background_location.device_background_location
+package com.passioncoder.device_background_location
 
 import android.content.BroadcastReceiver
 import android.content.Context

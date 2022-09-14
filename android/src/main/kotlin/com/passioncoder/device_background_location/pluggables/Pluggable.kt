@@ -1,4 +1,4 @@
-package com.passioncoder.device_background_location.device_background_location.pluggables
+package com.passioncoder.device_background_location.pluggables
 
 import android.content.Context
 

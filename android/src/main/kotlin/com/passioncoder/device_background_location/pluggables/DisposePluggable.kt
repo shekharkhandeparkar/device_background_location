@@ -1,11 +1,11 @@
-package com.passioncoder.device_background_location.device_background_location.pluggables
+package com.passioncoder.device_background_location.pluggables
 
 import android.content.Context
 import android.os.Handler
 import io.flutter.plugin.common.MethodChannel
-import com.passioncoder.device_background_location.device_background_location.IsolateHolderService
-import com.passioncoder.device_background_location.device_background_location.Keys
-import com.passioncoder.device_background_location.device_background_location.PreferencesManager
+import com.passioncoder.device_background_location.IsolateHolderService
+import com.passioncoder.device_background_location.Keys
+import com.passioncoder.device_background_location.PreferencesManager
 
 class DisposePluggable : Pluggable {
     override fun setCallback(context: Context, callbackHandle: Long) {
@@ -14,7 +14,8 @@ class DisposePluggable : Pluggable {
 
     override fun onServiceDispose(context: Context) {
         (PreferencesManager.getCallbackHandle(context, Keys.DISPOSE_CALLBACK_HANDLE_KEY))?.let { disposeCallback ->
-            val backgroundChannel = MethodChannel(IsolateHolderService.backgroundEngine?.dartExecutor?.binaryMessenger!!,
+            val backgroundChannel = MethodChannel(
+                IsolateHolderService.backgroundEngine?.dartExecutor?.binaryMessenger!!,
                     Keys.BACKGROUND_CHANNEL_ID)
             Handler(context.mainLooper)
                     .post {

@@ -1,4 +1,4 @@
-package com.passioncoder.device_background_location.device_background_location.provider
+package com.passioncoder.device_background_location.provider
 
 interface BLLocationProvider {
     var listener: LocationUpdateListener?

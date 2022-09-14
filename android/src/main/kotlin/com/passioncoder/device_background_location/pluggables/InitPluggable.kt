@@ -1,12 +1,11 @@
-package com.passioncoder.device_background_location.device_background_location.pluggables
+package com.passioncoder.device_background_location.pluggables
 
 import android.content.Context
 import android.os.Handler
 import io.flutter.plugin.common.MethodChannel
-import com.passioncoder.device_background_location.device_background_location.IsolateHolderService
-import com.passioncoder.device_background_location.device_background_location.Keys
-import com.passioncoder.device_background_location.device_background_location.PreferencesManager
-import com.passioncoder.device_background_location.device_background_location.pluggables.Pluggable
+import com.passioncoder.device_background_location.IsolateHolderService
+import com.passioncoder.device_background_location.Keys
+import com.passioncoder.device_background_location.PreferencesManager
 
 class InitPluggable : Pluggable {
     private var isInitCallbackCalled = false
@@ -22,11 +21,13 @@ class InitPluggable : Pluggable {
                 val initialDataMap = PreferencesManager.getDataCallback(context, Keys.INIT_DATA_CALLBACK_KEY)
 
                 
-                val backgroundChannel = MethodChannel(IsolateHolderService.backgroundEngine?.dartExecutor?.binaryMessenger!!,
+                val backgroundChannel = MethodChannel(
+                    IsolateHolderService.backgroundEngine?.dartExecutor?.binaryMessenger!!,
                         Keys.BACKGROUND_CHANNEL_ID)
                 Handler(context.mainLooper)
                         .post {
-                            backgroundChannel.invokeMethod(Keys.BCM_INIT,
+                            backgroundChannel.invokeMethod(
+                                Keys.BCM_INIT,
                                     hashMapOf(Keys.ARG_INIT_CALLBACK to initCallback, Keys.ARG_INIT_DATA_CALLBACK to initialDataMap))
                         }
             }

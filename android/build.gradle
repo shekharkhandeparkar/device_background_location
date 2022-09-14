@@ -1,4 +1,4 @@
-group 'com.passioncoder.device_background_location.device_background_location'
+group 'com.passioncoder.device_background_location'
 version '1.0-SNAPSHOT'
 
 buildscript {
@@ -43,4 +43,11 @@ android {
     defaultConfig {
         minSdkVersion 16
     }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "com.google.android.gms:play-services-location:18.0.0"
+    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.google.android.material:material:1.0.0'
 }

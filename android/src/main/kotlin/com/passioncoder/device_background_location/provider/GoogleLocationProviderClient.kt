@@ -1,11 +1,8 @@
-package com.passioncoder.device_background_location.device_background_location.provider
+package com.passioncoder.device_background_location.provider
 
 import android.annotation.SuppressLint
 import android.content.Context
 import com.google.android.gms.location.*
-import com.passioncoder.device_background_location.device_background_location.provider.LocationParserUtil
-import com.passioncoder.device_background_location.device_background_location.provider.LocationRequestOptions
-import com.passioncoder.device_background_location.device_background_location.provider.LocationUpdateListener
 
 class GoogleLocationProviderClient(context: Context, override var listener: LocationUpdateListener?) :
     BLLocationProvider {

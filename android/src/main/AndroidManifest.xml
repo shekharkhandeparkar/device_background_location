@@ -1,3 +1,3 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.passioncoder.device_background_location.device_background_location">
+  package="com.passioncoder.device_background_location">
 </manifest>

@@ -1,4 +1,4 @@
-package com.passioncoder.device_background_location.device_background_location
+package com.passioncoder.device_background_location
 
 import android.app.*
 import android.content.Context
@@ -13,10 +13,10 @@ import io.flutter.FlutterInjector
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
-import com.passioncoder.device_background_location.device_background_location.pluggables.DisposePluggable
-import com.passioncoder.device_background_location.device_background_location.pluggables.InitPluggable
-import com.passioncoder.device_background_location.device_background_location.pluggables.Pluggable
-import com.passioncoder.device_background_location.device_background_location.provider.*
+import com.passioncoder.device_background_location.pluggables.DisposePluggable
+import com.passioncoder.device_background_location.pluggables.InitPluggable
+import com.passioncoder.device_background_location.pluggables.Pluggable
+import com.passioncoder.device_background_location.provider.*
 import java.util.HashMap
 
 class IsolateHolderService : MethodChannel.MethodCallHandler, LocationUpdateListener, Service() {
@@ -241,7 +241,7 @@ class IsolateHolderService : MethodChannel.MethodCallHandler, LocationUpdateList
         }
     }
 
-    override fun onLocationUpdated(location: HashMap<Any, Any>?) {
+    override fun onLocationUpdated(location: HashMap<Any, Any?>?) {
         FlutterInjector.instance().flutterLoader().ensureInitializationComplete(context, null)
 
         //https://github.com/flutter/plugins/pull/1641
@@ -254,7 +254,7 @@ class IsolateHolderService : MethodChannel.MethodCallHandler, LocationUpdateList
                 Keys.CALLBACK_HANDLE_KEY
             ) as Long
 
-            val result: HashMap<Any, Any> =
+            val result: HashMap<String, Any> =
                     hashMapOf(
                         Keys.ARG_CALLBACK to callback,
                             Keys.ARG_LOCATION to location)
@@ -263,7 +263,7 @@ class IsolateHolderService : MethodChannel.MethodCallHandler, LocationUpdateList
         }
     }
 
-    private fun sendLocationEvent(result: HashMap<Any, Any>) {
+    private fun sendLocationEvent(result: HashMap<String, Any>) {
         //https://github.com/flutter/plugins/pull/1641
         //https://github.com/flutter/flutter/issues/36059
         //https://github.com/flutter/plugins/pull/1641/commits/4358fbba3327f1fa75bc40df503ca5341fdbb77d
@@ -271,7 +271,10 @@ class IsolateHolderService : MethodChannel.MethodCallHandler, LocationUpdateList
 
         if (backgroundEngine != null) {
             val backgroundChannel =
-                    MethodChannel(backgroundEngine?.dartExecutor?.binaryMessenger!!, Keys.BACKGROUND_CHANNEL_ID)
+                    MethodChannel(
+                        backgroundEngine?.dartExecutor?.binaryMessenger!!,
+                        Keys.BACKGROUND_CHANNEL_ID
+                    )
             Handler(context.mainLooper)
                     .post {
                         Log.d("plugin", "sendLocationEvent $result")

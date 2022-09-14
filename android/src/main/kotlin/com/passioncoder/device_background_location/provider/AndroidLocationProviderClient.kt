@@ -1,4 +1,4 @@
-package com.passioncoder.device_background_location.device_background_location.provider
+package com.passioncoder.device_background_location.provider
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -7,10 +7,6 @@ import android.location.LocationListener
 import android.location.LocationManager
 import androidx.core.content.ContextCompat
 import android.os.Bundle
-import com.passioncoder.device_background_location.device_background_location.provider.BLLocationProvider
-import com.passioncoder.device_background_location.device_background_location.provider.LocationParserUtil
-import com.passioncoder.device_background_location.device_background_location.provider.LocationRequestOptions
-import com.passioncoder.device_background_location.device_background_location.provider.LocationUpdateListener
 
 class AndroidLocationProviderClient(context: Context, override var listener: LocationUpdateListener?) : BLLocationProvider, LocationListener {
     private val client: LocationManager? =

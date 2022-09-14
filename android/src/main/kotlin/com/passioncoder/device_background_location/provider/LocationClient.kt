@@ -1,4 +1,4 @@
-package com.passioncoder.device_background_location.device_background_location.provider
+package com.passioncoder.device_background_location.provider
 
 enum class LocationClient(val value: Int) {
     Google(0), Android(1);

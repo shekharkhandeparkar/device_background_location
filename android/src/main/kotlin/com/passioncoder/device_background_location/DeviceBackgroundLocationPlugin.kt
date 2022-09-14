@@ -1,4 +1,4 @@
-package com.passioncoder.device_background_location.device_background_location
+package com.passioncoder.device_background_location
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -19,11 +19,8 @@ import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 import io.flutter.plugin.common.PluginRegistry
-import com.passioncoder.device_background_location.device_background_location.IsolateHolderService
-import com.passioncoder.device_background_location.device_background_location.Keys
-import com.passioncoder.device_background_location.device_background_location.PreferencesManager
-import com.passioncoder.device_background_location.device_background_location.pluggables.DisposePluggable
-import com.passioncoder.device_background_location.device_background_location.pluggables.InitPluggable
+import com.passioncoder.device_background_location.pluggables.DisposePluggable
+import com.passioncoder.device_background_location.pluggables.InitPluggable
 
 class DeviceBackgroundLocationPlugin
   : MethodCallHandler, FlutterPlugin, PluginRegistry.NewIntentListener, ActivityAware {
@@ -46,7 +43,7 @@ class DeviceBackgroundLocationPlugin
     @SuppressLint("MissingPermission")
     @JvmStatic
     private fun registerLocator(context: Context,
-                                args: Map<Any, Any>,
+                                args: Map<String, Any>,
                                 result: Result?) {
       if (IsolateHolderService.isServiceRunning) {
         // The service is running already
@@ -150,7 +147,7 @@ class DeviceBackgroundLocationPlugin
     }
 
     @JvmStatic
-    private fun initializeService(context: Context, args: Map<Any, Any>) {
+    private fun initializeService(context: Context, args: Map<String, Any>) {
       val callbackHandle: Long = args[Keys.ARG_CALLBACK_DISPATCHER] as Long
       setCallbackDispatcherHandle(context, callbackHandle)
     }
@@ -178,7 +175,7 @@ class DeviceBackgroundLocationPlugin
     }
 
     @JvmStatic
-    private fun updateNotificationText(context: Context, args: Map<Any, Any>) {
+    private fun updateNotificationText(context: Context, args: Map<String, Any>) {
       val intent = Intent(context, IsolateHolderService::class.java)
       intent.action = IsolateHolderService.ACTION_UPDATE_NOTIFICATION
       if (args.containsKey(Keys.SETTINGS_ANDROID_NOTIFICATION_TITLE)) {
@@ -225,7 +222,7 @@ class DeviceBackgroundLocationPlugin
   override fun onMethodCall(call: MethodCall, result: Result) {
     when (call.method) {
       Keys.METHOD_PLUGIN_INITIALIZE_SERVICE -> {
-        val args: Map<Any, Any>? = call.arguments()
+        val args: Map<String, Any>? = call.arguments()
 
         // save callback dispatcher to use it when device reboots
         PreferencesManager.saveCallbackDispatcher(context!! , args!!)
@@ -237,7 +234,7 @@ class DeviceBackgroundLocationPlugin
         result.success(true)
       }
       Keys.METHOD_PLUGIN_REGISTER_LOCATION_UPDATE -> {
-        val args: Map<Any, Any>? = call.arguments()
+        val args: Map<String, Any>? = call.arguments()
 
         // save setting to use it when device reboots
 
@@ -257,7 +254,7 @@ class DeviceBackgroundLocationPlugin
           return
         }
 
-        val args: Map<Any, Any>? = call.arguments()
+        val args: Map<String, Any>? = call.arguments()
 
         updateNotificationText(context!!, args!!)
 
